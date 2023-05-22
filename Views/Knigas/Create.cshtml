@@ -1,0 +1,60 @@
+﻿@model Knigi.ViewModels.KnigaCreateViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Kniga</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Kniga.Naslov" class="control-label"></label>
+                <input asp-for="Kniga.Naslov" class="form-control" />
+                <span asp-validation-for="Kniga.Naslov" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kniga.AvtorId" class="control-label"></label>
+                <select asp-for="Kniga.AvtorId" class="form-control" asp-items="ViewBag.AvtorId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kniga.Godina" class="control-label"></label>
+                <input asp-for="Kniga.Godina" class="form-control" />
+                <span asp-validation-for="Kniga.Godina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kniga.Opis" class="control-label"></label>
+                <input asp-for="Kniga.Opis" class="form-control" />
+                <span asp-validation-for="Kniga.Opis" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Genres</label>
+                <select asp-for="SelectedZanrovi" class="form-control js-example-basic-multiple"
+                        asp-items="Model.ZanroviLista"> </select>
+                <span asp-validation-for="SelectedZanrovi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Kniga.SlikaUrl" class="control-label"></label>
+                <input asp-for="Kniga.SlikaUrl" class="form-control" />
+                <span asp-validation-for="Kniga.SlikaUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
